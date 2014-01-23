@@ -1,19 +1,21 @@
 <html>
+  <!-- Ive got this thing about properly formated HTML pages so I had put the wright minimal tags in -->
   <head>
   </head>
 <body>
   <h1> New Post </h1>
-    <%= form_for :post, url: posts_path do |f| %>
+  <%= form_for :post, url: posts_path do |f| %> <!--Calls the ApplicationControllers that are prebuilt into rails for using forms-->
     <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
+      <%= f.label :title %><br> <!--Form Title Text -->
+      <%= f.text_field :title %><!--Form Text field (single line) for user-->
     </p>
     <p>
-      <%= f.label :text %><br>
-      <%= f.text_area :text %>
+      <%= f.label :text %><br> <!--Form Text Box Title  -->
+      <%= f.text_area :text %><!--Form Expandable Textbox for User -->
     </p>
     <p>
-      <%= f.submit %>
+      <%= f.submit %> <!-- submit button-->
     </p>
     <% end %>
   </body>
+</html>
