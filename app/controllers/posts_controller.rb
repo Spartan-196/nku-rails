@@ -1,5 +1,5 @@
-class PostController < ApplicationController
-  def new
+class PostsController < ApplicationController
+ def new
   end
   
   def create
