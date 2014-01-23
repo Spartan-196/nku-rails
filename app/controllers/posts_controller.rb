@@ -8,4 +8,8 @@ class PostsController < ApplicationController
     @post.save #Save new page
     redirect_to @post #reroute submit user to the posted page
   end
+  private
+  def post_params
+    params.require(:post).permit(:title, :text)
+  end
 end
