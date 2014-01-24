@@ -4,6 +4,10 @@ class PostsController < ApplicationController
   @post = Post.new
  end
 ########
+  def show
+    @post = Post.find(params[:id])
+  end
+########
  def create
   # render text: params[:post].inspect #Debug dump submitted text to screen to test submition without page generation.
   @post = Post.new(params[:post].permit(:title, :text)) 
@@ -23,10 +27,6 @@ class PostsController < ApplicationController
   else
     render 'edit'
   end
-  end
-########
-  def show
-    @post = Post.find(params[:id])
   end
 ########
   def index
