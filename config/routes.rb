@@ -6,7 +6,7 @@ NkuRails::Application.routes.draw do
 #    GET    /posts/:id(.:format)      posts #show
 #    GET    /posts/:id(.:format)      posts #index
 #    DELETE /posts/:id(.:format)      posts#destroy
-    root to: 'welcome#index' #Rails Root location to start looking from
+  root to: 'welcome#index' #Rails Root location to start looking pages
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
