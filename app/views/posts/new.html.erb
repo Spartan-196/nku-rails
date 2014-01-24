@@ -5,18 +5,32 @@
 <body>
   <h1> New Post </h1>
   <%= form_for :post, url: posts_path do |f| %> <!--Calls the ApplicationControllers that are prebuilt into rails for using forms-->
-    <p>
+  <% if @post.errors.any? %> <!--Validation check for errors -->
+  <div id="error_explanation"> <!-- if an error is returned. say so -->
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited
+      this post from being saved:</h2> <!--give error message with count of the errors folled by what they are in level 2 heading-->
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
       <%= f.label :title %><br> <!--Form Title Text -->
       <%= f.text_field :title %><!--Form Text field (single line) for user-->
-    </p>
-    <p>
+  </p>
+ 
+  <p>
       <%= f.label :text %><br> <!--Form Text Box Title  -->
       <%= f.text_area :text %><!--Form Expandable Textbox for User -->
-    </p>
-    <p>
+  </p>
+ 
+  <p>
       <%= f.submit %> <!-- submit button-->
-    </p>
-    <% end %>
+  </p>
+<% end %>
+
     <%= form_for :post do |f| %>
     ...
     <% end %> 

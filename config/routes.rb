@@ -2,6 +2,7 @@ NkuRails::Application.routes.draw do
   #get "welcome/index"
     resources :posts #Adds REST resources
     root to: 'welcome#index' #Rails Root location to start looking from
+    post GET    /posts/:id(.:format)      posts#show
     posts GET    /posts(.:format) posts #index
 
 end

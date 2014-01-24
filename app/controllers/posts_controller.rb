@@ -1,14 +1,20 @@
 class PostsController < ApplicationController
  def new
+  @post = Post.new
+ end
+ 
+ def create
+  # render text: params[:post].inspect #Debug dump submitted text to screen to test submition without page generation.
+  @post = Post.new(params[:post].permit(:title, :text)) 
+ 
+  if @post.save #Validation check before save
+    redirect_to @post#If it fails go back to post
+  else
+    render 'new' #if good make new post from submited fields
   end
-  
-  def create
-    # render text: params[:post].inspect #Debug dump submitted text to screen to test submition without page generation.
-    @post = Post.new(post_params) #Take submitted post and make new page
-    @post.save #Save new page
-    redirect_to @post #reroute submit user to the posted page
+  def edit
+  @post = Post.find(params[:id])
   end
-  
   def show
     @post = Post.find(params[:id])
   end
