@@ -1,7 +1,7 @@
 NkuRails::Application.routes.draw do
   #get "welcome/index"
   resources :posts do #Adds REST resources
-  resources :comments #adds REST resources
+    resources :comments #adds nested resources within post
   end
 #    GET    /posts/:id(.:format)      posts #show
 #    GET    /posts/:id(.:format)      posts #index
