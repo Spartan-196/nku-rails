@@ -11,5 +11,9 @@
       <strong>Text:</strong> <!-- Shows the posts body text -->
       <%= @post.text %>
     </p>
+    ...
+ 
+<%= link_to 'Back', posts_path %>
+| <%= link_to 'Edit', edit_post_path(@post) %>
   </body>
 </html>

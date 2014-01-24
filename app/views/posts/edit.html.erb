@@ -4,11 +4,11 @@
   <body>
     <h1>Editing post</h1>
  
-<%= form_for :post, url: post_path(@post), method: :patch do |f| %>
-  <% if @post.errors.any? %>
-  <div id="error_explanation">
+<%= form_for :post, url: post_path(@post), method: :patch do |f| %><!--Calls the ApplicationControllers that are prebuilt into rails for using forms and patches the existing page when done-->
+  <% if @post.errors.any? %><!--Validation check for errors -->
+  <div id="error_explanation"> <!-- if an error is returned. say so -->
     <h2><%= pluralize(@post.errors.count, "error") %> prohibited
-      this post from being saved:</h2>
+      this post from being saved:</h2><!--give error message with count of the errors folled by what they are in level 2 heading-->
     <ul>
     <% @post.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
