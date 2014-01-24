@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
- def new
+########
+  def new
   @post = Post.new
  end
- 
+########
  def create
   # render text: params[:post].inspect #Debug dump submitted text to screen to test submition without page generation.
   @post = Post.new(params[:post].permit(:title, :text)) 
@@ -12,19 +13,27 @@ class PostsController < ApplicationController
   else
     render 'new' #if good make new post from submited fields
   end
+########   
   def edit
-  @post = Post.find(params[:id])
+     @post = Post.find(params[:id])
+ 
+  if @post.update(params[:post].permit(:title, :text))
+    redirect_to @post
+  else
+    render 'edit'
   end
+########
   def show
     @post = Post.find(params[:id])
   end
-  
+########
   def index
     @posts = Post.all 
   end
-  
+########  
   private
   def post_params
     params.require(:post).permit(:title, :text)
   end
+########
 end
