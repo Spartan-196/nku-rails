@@ -3,7 +3,7 @@ NkuRails::Application.routes.draw do
     resources :posts #Adds REST resources
     root to: 'welcome#index' #Rails Root location to start looking from
     post GET    /posts/:id(.:format)      posts#show
-    posts GET    /posts(.:format) posts #index
+    #posts GET    /posts(.:format) posts #index
 
 end
   # The priority is based upon order of creation: first created -> highest priority.
