@@ -13,6 +13,7 @@ class PostsController < ApplicationController
   else
     render 'new' #if good make new post from submited fields
   end
+ end
 ########   
   def edit
      @post = Post.find(params[:id])
@@ -21,6 +22,7 @@ class PostsController < ApplicationController
     redirect_to @post
   else
     render 'edit'
+  end
   end
 ########
   def show
@@ -36,4 +38,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :text)
   end
 ########
-end
+end 
+
