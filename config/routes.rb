@@ -1,6 +1,7 @@
 NkuRails::Application.routes.draw do
   #get "welcome/index"
-    resources :posts #Adds REST resources
+  resources :posts do #Adds REST resources
+  resources :comments #adds REST resources 
     #GET    /posts/:id(.:format)      posts #show
     #GET    /posts/:id(.:format)      posts #index
     #DELETE /posts/:id(.:format)      posts#destroy
