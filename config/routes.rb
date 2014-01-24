@@ -1,10 +1,10 @@
 NkuRails::Application.routes.draw do
   #get "welcome/index"
     resources :posts #Adds REST resources
-    root to: 'welcome#index' #Rails Root location to start looking from
     GET    /posts/:id(.:format)      posts #show
     GET    /posts/:id(.:format)      posts #index
     DELETE /posts/:id(.:format)      posts#destroy
+    root to: 'welcome#index' #Rails Root location to start looking from
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
