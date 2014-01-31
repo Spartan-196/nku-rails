@@ -1,0 +1,27 @@
+<html>
+  <head>
+  </head>
+    <body>
+      <h1>Listing Students</h1> 
+      <%= link_to 'New post', new_student_path %> <!-- link to new post page-->
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Text</th>
+        </tr>
+ 
+        <% @student.each do |post| %> <!--at each post put links to show, edit, and delete-->
+          <tr>
+            <td><%= student.name %></td>
+            <td><%= student.nickname %></td>
+            <td><%= student.email %></td>
+            <td><%= student.image %></td>
+            <td><%= link_to 'Show', post %></td> 
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <!--<td><%= link_to 'Destroy', post_path(post),method: :delete, data: { confirm: 'Are you sure?' }%></td>-->
+          </tr>
+        <% end %>
+      </table>
+ 
+  </body>
+</html>

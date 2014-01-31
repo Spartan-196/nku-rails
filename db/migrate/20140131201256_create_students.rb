@@ -4,7 +4,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :name
       t.string :nickname
       t.string :email
-      t.url :image
+      t.text :image
 
       t.timestamps
     end

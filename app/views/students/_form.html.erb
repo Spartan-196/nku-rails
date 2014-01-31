@@ -1,0 +1,43 @@
+<html>
+  <!-- Ive got this thing about properly formated HTML pages so I had put the wright minimal tags in -->
+  <head>
+  </head>
+<body>
+<%= form_for @student do |f| %><!--Calls the ApplicationControllers that are prebuilt into rails for using forms-->
+  <% if @student.errors.any? %><!--Validation check for errors -->
+   <div id="error_explanation"> <!-- if an error is returned. say so -->
+    <h2><%= pluralize(@student.errors.count, "error") %> prohibited
+      this page from being saved:</h2> <!--give error message with count of the errors folled by what they are in level 2 heading-->
+    <ul>
+    <% @student.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+      <%= f.label :name %><br> <!--Form Title Text -->
+      <%= f.text_field :name %><!--Form Text field (single line) for user-->
+  </p>
+ 
+  <p>
+      <%= f.label :nickname %><br> <!--Form Text Box Title  -->
+      <%= f.text_field :nickname %><!--Form Expandable Textbox for User -->
+  </p>
+  <p>
+    <%= f.label :email %> <br>
+    <%= f.text_field :email%>
+  </p>
+  
+  <P>
+    <%=f.label :image %> <br>
+    <%=f.text_field :image %>
+  </p>
+  <p>
+  
+      <%= f.submit %> <!-- submit button-->
+  </p>
+<% end %>
+  </body>
+</html>
+  
