@@ -3,6 +3,7 @@ NkuRails::Application.routes.draw do
   resources :posts do #Adds REST resources
     resources :comments #adds nested resources within post
   end
+  resources: students
 #    GET    /posts/:id(.:format)      posts #show
 #    GET    /posts/:id(.:format)      posts #index
 #    DELETE /posts/:id(.:format)      posts #destroy
