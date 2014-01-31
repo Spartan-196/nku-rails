@@ -6,9 +6,9 @@ class Student < ActiveRecord::Base
   
   def image_url_with_fallback
     if image.present?
-       
+      image
     elsif email
-      "http://gavatar.com/"+MD5.hexdigest(:email)+"?d=mm"
+      "http://gravatar.com/avatar/"+Digest::MD5.hexdigest(email)+"?d=mm"
     end
   end
 end
