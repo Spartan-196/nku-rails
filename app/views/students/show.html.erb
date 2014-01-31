@@ -5,20 +5,20 @@
   <body>
     <p>
       <strong>Name:</strong>
-      <%= @student.name %> <!-- Shows the posts title -->
+      <%= @student.name %> <!-- Shows the Students name -->
     </p>
  
     <p>
-      <strong>Nickname:</strong> <!-- Shows the posts body text -->
+      <strong>Nickname:</strong> <!-- Shows the students nickname -->
       <%= @student.nickname %>
     </p>
     <p>
-      <strong>Email:</strong> <!-- Shows the posts body text -->
-      <%= @student.email %>
+      <strong>Email:</strong> <!-- Shows the students email -->
+      <%= mail_to @student.email %>
     </p>
     <p>
-      <strong>Nickname:</strong> <!-- Shows the posts body text -->
-      <%= @student.nickname %>
+      <strong>Image:</strong> <!-- Pulls image from the URL source -->
+      <%= image_tag @student.image_url_with_fallback %>
     </p>
  
     <%= link_to 'Edit', edit_student_path(@student) %>|<%= link_to 'Back', posts_path %>
