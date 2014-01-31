@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
 ########
  def create
   # render text: params[:student].inspect #Debug dump submitted text to screen to test submition without page generation.
-  @student = Student.new(params[:student].permit(:title, :text)) 
+  @student = Student.new(params[:student].permit(:name, :nickname, :email, :image)) 
  
   if @student.save #Validation check before save
     redirect_to @student#If it fails go back to student
@@ -48,7 +48,7 @@ end
 ########
   private
   def student_params
-    params.require(:student).permit(:title, :text)
+    params.require(:student).permit(:name, :nickname, :email, :image)
   end
 ########
 end 
