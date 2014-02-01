@@ -4,20 +4,21 @@
     <body>
       <h1>Listing Students</h1> 
       <%= link_to 'New Student', new_student_path %> <!-- link to new post page-->
-      <table>
+      <table cellpadding="3">
         <tr>
+          <th></th>
           <th>Name</th>
           <th>Nickname</th>
           <th>Email</th>
-          <th>Profile Iamge</th>
         </tr>
  
         <% @student.each do |student| %> <!--at each post put links to show, edit, and delete-->
           <tr>
+            <td><%= image_tag student.image_url_with_fallback %></td>
             <td><%= student.name %></td>
-            <td><%= student.nickname %></td>
+            <td align="center"><%= student.nickname %></td>
             <td><%= mail_to student.email %></td>
-            <td><%= image_tag student.image %></td>
+
             <td><%= link_to 'Show', student %></td> 
             <td><%= link_to 'Edit', edit_student_path(student) %></td>
             <% #<td><%= link_to 'Destroy', post_path(student),method: :delete, data: { confirm: 'Are you sure?' }</td>
