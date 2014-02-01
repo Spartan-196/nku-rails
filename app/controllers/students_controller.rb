@@ -9,6 +9,7 @@ class StudentsController < ApplicationController
   @student = Student.new(params[:student].permit(:name, :nickname, :email, :image)) 
  
   if @student.save #Validation check before save
+    flash[:success] = "Student Added"
     redirect_to @student#If it fails go back to student
   else
     render 'new' #if good make new student from submited fields
@@ -27,7 +28,8 @@ def update
   @student = Student.find(params[:id])
  
   if @student.update(params[:student].permit(:name, :nickname, :email, :image))
-    redirect_to @student
+    redirect_to students_path
+    flash[:success] = "Student updated"
   else
     render 'edit'
   end
