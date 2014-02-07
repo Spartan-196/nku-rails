@@ -1,0 +1,27 @@
+<html>
+  <!-- Ive got this thing about properly formated HTML pages so I had put the wright minimal tags in -->
+  <head>
+  </head>
+<body>
+    <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+    <% end -%>
+    <h1>Log In</h1>
+    <%= form_tag sessions_path do |f| %>
+     
+      <p>
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email] %>
+      </p>
+
+      <p>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+      </p>
+      <p>
+        <%= submit_tag "Log in" %>
+      </p>
+    <% end %>
+    <%= link_to 'Back', students_path %>
+  </body>
+</html>

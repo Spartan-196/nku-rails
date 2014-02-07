@@ -14,6 +14,9 @@ gem 'sass-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+#rails authentication from scratch
+gem "bcryupt-ruby", require=> "bcrypt"
+
 group :development, :test do
   gem 'byebug'
 end
