@@ -3,9 +3,17 @@
     <title>Students</title>
   </head>
     <body>
-     <%= link_to "Sign Up", new_student path %>
-      <% if current_student %>
-      <h3>Welcome, <%= current_student.name %> </h3>
+	    <% if flash[:notice] %> <!-- If theres a flash notice load it here at the top in new div section-->
+		    <div class="notice"><%= flash[:notice] %> </div>
+	    <%end%>
+      <% @current = current_user %> <!--Find current user login-->
+      <% if @current == nil %> <!-- if no login show new secctions with sign up/sign in links {will edit later to lok nice-->
+        <p><%= link_to 'Sign up', new_student_path %> &nbsp <h4>|</h4> &nbsp <%= link_to 'Sign in', sessions_path %></p>
+        <% else %>
+          <h3>Welcome, <%= current_student.name %> </h3> <!-- welcome line for currently logged in user -->
+          <%= link_to "Sign out", session_path(session), method: :delete, data: { confirm: 'Are you sure you want to sign out?' } %>
+        <% end %>
+      
       <h1>Listing Students</h1> 
       <%= link_to 'New Student', new_student_path %> <!-- link to new post page-->
       <table cellpadding="3">
@@ -23,13 +31,15 @@
             <td align="center"><%= student.nickname %></td>
             <td><%= mail_to student.email %></td>
 
-            <td><%= link_to 'Show', student %></td> 
-            <td><%= link_to 'Edit', edit_student_path(student) %></td>
-            <td><%= link_to 'Destroy', student_path(student),method: :delete, data: { confirm: 'Are you sure?' } %></td>
- 
+            <td><%= link_to 'Show', student %></td>
+          </tr>
+          <tr> <!-- If the current user matches an email address make a new row with options to edit profile and delete profile-->
+            <%if @current == student.email %>
+            <td><%= link_to 'Edit Profile', edit_student_path(student) %></td>
+            <td><%= link_to 'Delete Profile', student_path(student),method: :delete, data: { confirm: 'Perminately Delete Your Profle?' } %></td>
+            <%end%>
           </tr>
         <% end %>
       </table>
- 
   </body>
 </html>
