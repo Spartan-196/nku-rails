@@ -8,20 +8,21 @@ end
  
 def create
   # render text: params[:student].inspect #Debug dump submitted text to screen to test submition without page generation.
-  @student = Student.new(params[:student].permit(:name, :nickname, :email, :image)) 
+  @student = Student.new(params[:student].permit(:name, :nickname, :email, :password, :password_confirm, :image)) 
  
-  if @student.save #Validation check before save
-     session[:user_id] = @student.id	 
-    redirect_to students_path, :notice => "You have registered."#If it fails go back to student
+  if @student.save #Save input to new student
+     session[:user_id] = @student.id	  #generate session ID
+    redirect_to students_path, :notice => "You have registered." #route user back to students with a "sucessful" notification
   else
-    render 'new' #if good make new student from submited fields
+    flash[:notice] = "Invalid input please correct"
+    render 'new' #Show form for them to correct invalid entrie
   end
  end
 
 def show
-  @current = current_user
-  flash[:info] = @current.name
   @student = Student.find(params[:id])
+  @scurrent = current_user
+  flash[:info] = @current.name
  
   #email_address= @student.email.downcase
 
@@ -33,9 +34,9 @@ end
 
 def update
   @student = Student.find(params[:id])
-   if @student.update(params[:student].permit(:name, :nickname, :email, :image))
-    redirect_to students_path
+   if @student.update(params[:student].permit(:name, :nickname, :email, :password, :password_confirm, :image))
     flash[:success] = "Student updated"
+     redirect_to students_path
   else
     render 'edit'
   end
@@ -48,6 +49,7 @@ end
 def destroy
   @student = Student.find(params[:id])
   @student.destroy
+  flash[:notice]="Delete Successful"
   session[:user_id] = nil
   @current_user=nil
     redirect_to students_path
