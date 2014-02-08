@@ -4,7 +4,6 @@ class Student < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 2 }
   #validates :email, presence: true
   # Schema: User(name:string, password_digest:string)
-  attr_accessible :email, :password, :password_confirm
   validates :email, uniqueness:true
   has_secure_password
   validates_presence_of :password, :on => :create  
