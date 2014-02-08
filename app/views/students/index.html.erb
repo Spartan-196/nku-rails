@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Students</title>
+    <title>Students</title> 
   </head>
     <body>
 	    <% if flash[:notice] %> <!-- If theres a flash notice load it here at the top in new div section-->
@@ -8,7 +8,7 @@
 	    <%end%>
       <% @current = current_user %> <!--Find current user login-->
       <% if @current == nil %> <!-- if no login show new secctions with sign up/sign in links {will edit later to lok nice-->
-        <p><%= link_to 'Sign up', new_student_path %> &nbsp <h4>|</h4> &nbsp <%= link_to 'Sign in', sessions_path %></p>
+        <p><%= link_to 'Sign up', new_student_path %> &nbsp <h4>|</h4> &nbsp <%= link_to 'Sign in', session_path %></p>
         <% else %>
           <h3>Welcome, <%= current_student.name %> </h3> <!-- welcome line for currently logged in user -->
           <%= link_to "Sign out", session_path(session), method: :delete, data: { confirm: 'Are you sure you want to sign out?' } %>
