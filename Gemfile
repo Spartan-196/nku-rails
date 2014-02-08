@@ -15,7 +15,9 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 #rails authentication from scratch
-gem "bcryupt-ruby", require=> "bcrypt"
+#gem 'bcryupt-ruby'
+gem 'rspec-rails'
+gem 'factory_girl_rails'
 
 group :development, :test do
   gem 'byebug'
