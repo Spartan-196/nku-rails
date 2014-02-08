@@ -53,7 +53,7 @@ end
   
 private
   def student_params
-    params.require(:student).permit(:name, :nickname, :email, :password, :password_confirm, :image)
+    params.require(:student).permit(:name, :nickname, :email, :password, :password_confirmation, :image)
   end
 end 
 
