@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140207221408) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "post_id"
-    t.integer  "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x00000005270d30>_id"
+    t.integer  "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x00000004ebc928>_id"
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
@@ -41,12 +41,7 @@ ActiveRecord::Schema.define(version: 20140207221408) do
     t.string   "nickname"
     t.string   "email"
     t.text     "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "email"
+    t.string   "password_digest"
     t.string   "password_hash"
     t.string   "password_salt"
     t.datetime "created_at"
