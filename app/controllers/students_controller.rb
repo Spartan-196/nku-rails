@@ -20,7 +20,7 @@ def create
 def show
   @student = Student.find(params[:id])
   @current = current_student
-  flash[:info] = @current.name
+  #flash[:info] = @current.name
 end
 
 def edit
