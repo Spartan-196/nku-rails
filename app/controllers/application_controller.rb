@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   private
-  def current_user
-    @current_user ||= Student.find(session[:user_id]) if session[:user_id]
+  def current_student
+    @current_student ||= Student.find(session[:student_id]) if session[:student_id]
   end
 
-    helper_method :current_user
+  helper_method :current_student
 end

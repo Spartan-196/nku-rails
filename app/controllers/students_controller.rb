@@ -19,7 +19,7 @@ def create
 
 def show
   @student = Student.find(params[:id])
-  @scurrent = current_user
+  @current = current_student
   flash[:info] = @current.name
 end
 
@@ -45,7 +45,7 @@ def destroy
   @student = Student.find(params[:id])
   @student.destroy
   flash[:notice]="Delete Successful"
-  session[:user_id] = nil
+  session[:student_id] = nil
   @current_user=nil
     redirect_to students_path
 end
