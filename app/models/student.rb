@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
       "http://gravatar.com/avatar/"+Digest::MD5.hexdigest(email)+"?d=mm"
     end
   end
-  def self.in_seat(seat, now-Date.today)
+  def self.in_seat(seat, now=Date.today)
     present(now).where('attendance.seat = ?', seat)
   end
   def self.absent(now=Date.today)

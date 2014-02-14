@@ -12,7 +12,7 @@
         <% else %>
       <h3>Welcome, <%= current_student.name %> | <%= link_to "Sign out", session_path(session), method: :delete, data: { confirm: 'Are you sure you want to sign out?' } %> </h3> 
         <% end %>
-      
+      <%= link_to 'I\'m Here', new_attendance_path %>
       <h2>Listing Students</h2>
       <table cellpadding="3">
         <tr>
@@ -35,6 +35,7 @@
             <%if current_student && current_student.id == student.id %>
             <td><%= link_to 'Edit Profile', edit_student_path(student) %></td>
             <td><%= link_to 'Delete Profile', student_path(student),method: :delete, data: { confirm: 'Perminately Delete Your Profle?' } %></td>
+            <td></td>
             <%end%>
           </tr>
         <% end %>
