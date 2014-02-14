@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  belongs_to :student
+  
 def create
   student = Student.find_by_email(params[:email])
   if student && student.authenticate(params[:password])
