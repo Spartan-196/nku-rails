@@ -1,0 +1,11 @@
+<%= form_for @attendance do |f| %>
+
+<p>
+      <%= f.label :seat %><br> <!--Form Title Text -->
+  <%= f.number_field :seat, min:1,max:4 %><!--Form Text field (single line) for user-->
+  </p>
+ <p class="button">
+    <%= f.submit %> <!-- submit button-->
+  </p>
+<%end%>
+

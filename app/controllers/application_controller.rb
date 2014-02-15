@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_student
+  
+  def require_login
+    redirect_to sessions_path unless current_student
+  end
 end

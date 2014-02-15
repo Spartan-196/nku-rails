@@ -1,19 +1,14 @@
 class AttendancesController < ApplicationController
-  
-  def new
-    
-    @current_student = current_student
-    
-    if !@current_student
-      redirect_to sessions_path(sessions)
-    end
-    
+  before_filter :require_login
+
+  def new 
     @attendance = Attendance.new
   end
     
   
   def create
-    @attendance= attendance.new(params[:attendance].permit(:attendance, :attended_on, :seat)) 
+    @attendance= Attendance.new(params[:attendance].permit(:attendance, :attended_on, :seat)) 
+    redirect_to attendances_path
   end
 
   private 
