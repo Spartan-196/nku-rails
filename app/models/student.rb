@@ -16,7 +16,7 @@ class Student < ActiveRecord::Base
     end
   end
   def self.in_seat(seat, now=Date.today)
-    present(now).where('attendance.seat = ?', seat)
+    present(now).where('attendances.seat = ?', seat)
   end
   def self.absent(now=Date.today)
     all - present(now)
