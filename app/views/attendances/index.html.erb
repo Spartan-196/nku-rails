@@ -1,39 +1,38 @@
-<html>
-  <!-- Ive got this thing about properly formated HTML pages so I had put the wright minimal tags in -->
-  <head>
-  </head>
-<body>
 
-  <h2>Attendance for <%= Date.today %></h2>
-
-    <div>Seat 1</div>
-    <ul>
-      <% @seat_1.each do |student| %>
-      <li><%= student.name %></li>
-      <% end %>
-    </ul>
-
-    <div>Seat 2</div>
-    <ul>
-      <% @seat_2.each do |student| %>
-      <li><%= student.name %></li>
-      <% end %>
-    </ul>
-
-    <div>Seat 3</div>
-    <ul>
-      <% @seat_3.each do |student| %>
-      <li><%= student.name %></li>
-      <% end %>
-    </ul>
-
-    <div>Seat 4</div>
-    <ul>
-      <% @seat_4.each do |student| %>
-      <li><%= student.name %></li>
-      <% end %>
-    </ul>
-  
-  <%= link_to 'Back', students_path %>
-  </body>
-</html>
+<h2>Attendance for <%= Date.today %></h2>
+<table>
+  <tr>
+    <td><div>Seat 1</div>
+      <ul>
+        <% @seat_1.each do |student| %>
+        <li><%= student.name %></li>
+        <% end %>
+      </ul></td>
+    <td><div>Seat 2</div>
+      <ul>
+        <% @seat_2.each do |student| %>
+        <li><%= student.name %></li>
+        <% end %>
+      </ul></td>
+  </tr>
+  <tr>
+    <td><div>Seat 3</div>
+      <ul>
+        <% @seat_3.each do |student| %>
+        <li><%= student.name %></li>
+        <% end %>
+      </ul></td>
+    <td><div>Seat 4</div>
+      <ul>
+        <% @seat_4.each do |student| %>
+        <li><%= student.name %></li>
+        <% end %>
+      </ul></td>
+  </tr>
+  <tfoot>
+    <tr>
+      <td colspan=2 align=center> Front Of Class Room</td>
+    </tr>
+  </tfoot>
+</table>
+<%= link_to 'Back', students_path %> 

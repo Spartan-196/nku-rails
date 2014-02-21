@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140215163945) do
+ActiveRecord::Schema.define(version: 20140218014607) do
 
   create_table "attendances", force: true do |t|
     t.datetime "created_at"
@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(version: 20140215163945) do
     t.string   "password_digest"
     t.string   "password_hash"
     t.string   "password_salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teachers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
