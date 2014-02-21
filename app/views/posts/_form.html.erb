@@ -1,8 +1,4 @@
-<html>
-  <!-- Ive got this thing about properly formated HTML pages so I had put the wright minimal tags in -->
-  <head>
-  </head>
-<body>
+]
 <%= form_for @post do |f| %><!--Calls the ApplicationControllers that are prebuilt into rails for using forms-->
   <% if @post.errors.any? %><!--Validation check for errors -->
    <div id="error_explanation"> <!-- if an error is returned. say so -->
@@ -29,6 +25,5 @@
       <%= f.submit %> <!-- submit button-->
   </p>
 <% end %>
-  </body>
-</html>
+
   

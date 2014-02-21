@@ -1,9 +1,4 @@
-<html>
-  <!-- Ive got this thing about properly formated HTML pages so I had put the wright minimal tags in -->
-  <head>
-  </head>
-<body>
-    <% flash.each do |name, msg| -%>
+<% flash.each do |name, msg| -%>
           <%= content_tag :div, msg, class: name %>
     <% end -%>
     <h1>Log In</h1>
@@ -23,5 +18,3 @@
       </p>
     <% end %>
     <%= link_to 'Back', students_path %>
-  </body>
-</html>

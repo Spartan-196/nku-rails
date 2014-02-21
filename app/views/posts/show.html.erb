@@ -1,9 +1,4 @@
-<html>
-  <!-- Ive got this thing about properly formated HTML pages so I had put the wright minimal tags in -->
-  <head>
-  </head>
-  <body>
-    <p>
+<p>
       <strong>Title:</strong>
       <%= @post.title %> <!-- Shows the posts title -->
     </p>
@@ -20,5 +15,3 @@
   
  
     <%= link_to 'Edit', edit_post_path(@post) %>|<%= link_to 'Back', posts_path %>
-  </body>
-</html>

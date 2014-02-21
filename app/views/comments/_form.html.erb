@@ -1,8 +1,4 @@
-<html>
-    <!-- Ive got this thing about properly formated HTML pages so I had put the wright minimal tags in -->
-  <head>
-  </head>
-    <body>
+
   <%= form_for([@post, @post.comments.build]) do |f| %>
     <p>
       <%= f.label :commenter %><br />
@@ -16,5 +12,3 @@
       <%= f.submit %>
     </p>
   <% end %>
-  </body>
-</html>
