@@ -39,4 +39,16 @@
     </tr>
   </tfoot>
 </table>
+<% @absent_students = Student.absent(@date) %>
+<div>
+    <h3>Absent on <%=Date%></h3>
+<table>
+  <% @absent_students.each do |student| %>
+    <tr>
+      <td><%= image_tag(student.image_url_with_fallback, size: "80x80") %></td>
+      <td><%= student.name %></td>
+    </tr>
+  <%end%>
+ </table>
+</div>
 <%= link_to 'Back', students_path %> 
