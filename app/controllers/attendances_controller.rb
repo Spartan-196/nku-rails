@@ -1,6 +1,6 @@
 class AttendancesController < ApplicationController
   before_filter :require_login
-
+  
   def index
     @date = params[:date] || Date.today
     #attempt to find who is in what seat and who is not present.
@@ -18,15 +18,21 @@ class AttendancesController < ApplicationController
   
   def create
     @attendance= Attendance.new(attandances_parms)
-    @existing_attendance=Attendance.where(:attended_on => Date.today, :student_id => !nil)
-    if (@existing_attendance== nil)
-      @attendance.save
-      redirect_to attendances_path, notice: "Attendance Recorded"
+    @attendance.seat = params[:attendance][:seat]
+    @attendance.attended_on = Date.today
+    @existing_attendance=Attendance.where(:attended_on => Date.today, :student_id => @current)
+    if (@existing_attendance.first== nil)
+      if @attendance.save
+        redirect_to attendances_path, notice: "Attendance Recorded"
     else 
-      flash[:notice] = "You have already created an attendance for today."
       render 'new' 
     end
+    else
+      flash[:notice] = "You have already created an attendance for today."
+      redirect_to students_path
+    end
   end
+  
   
   def self.in_seat(seat, date)
    Student.joins(:attendances).where(attendances: {seat: seat, attended_on: date})
