@@ -1,14 +1,75 @@
 <% if flash[:notice] %> <!-- If theres a flash notice load it here at the top in new div section-->
-		    <div class="notice"><%= flash[:notice] %> </div>
-	    <%end%>
-      <% @current = current_student %> <!--Find current user login-->
-      <% if @current == nil %> <!-- if no login show new secctions with sign up/sign in links {will edit later to lok nice-->
-      <p><%= link_to 'Sign up', new_student_path %> <strong>|</strong> <%= link_to 'Sign in', sessions_path %></p>
-        <% else %>
-      <h3>Welcome, <%= current_student.name %> | <%= link_to "Sign out", session_path(session), method: :delete, data: { confirm: 'Are you sure you want to sign out?' } %> </h3> 
+  <div class="notice"><%= flash[:notice] %> </div>
+<%end%>
+  <% @current = current_student %> <!--Find current user login-->
+  <% if @current == nil %> <!-- if no login show new secctions with sign up/sign in links {will edit later to lok nice-->
+    <p><%= link_to 'Sign up', new_student_path %> <strong>|</strong> <%= link_to 'Sign in', sessions_path %></p>
+    <% else %>
+       <h3>Welcome, <%= current_student.name %> | <%= link_to "Sign out", session_path(session), method: :delete, data: { confirm: 'Are you sure you want to sign out?' } %> </h3> 
+  <% end %>
+  <%= link_to 'I\'m Here', new_attendance_path %>
+      <h2>Attendance for <%=@date%> </h2>
+    <div class="date">
+      <%=form_tag attendances_path, method: :get do%>
+        <%=date_field_tag(:date, @date)%>
+      <%=submit_tag "Go"%>
+      <%end%>
+    </div>
+
+    <%@seat_1 = Student.in_seat(1, @date)%>
+    <%@seat_2 = Student.in_seat(2, @date)%>
+    <%@seat_3 = Student.in_seat(3, @date)%>
+    <%@seat_4 = Student.in_seat(4, @date)%>
+    <%@absent_students= Student.absent(@date)%>
+
+<table>
+  <tr>
+    <td><div>Seat 1</div>
+      <ul>
+        <% @seat_1.each do |student| %>
+        <li><%= student.name %></li>
         <% end %>
-      <%= link_to 'I\'m Here', new_attendance_path %>
-      <h2>Listing Students</h2>
+      </ul></td>
+    <td><div>Seat 2</div>
+      <ul>
+        <% @seat_2.each do |student| %>
+        <li><%= student.name %></li>
+        <% end %>
+      </ul></td>
+  </tr>
+  <tr>
+    <td><div>Seat 3</div>
+      <ul>
+        <% @seat_3.each do |student| %>
+        <li><%= student.name %></li>
+        <% end %>
+      </ul></td>
+    <td><div>Seat 4</div>
+      <ul>
+        <% @seat_4.each do |student| %>
+        <li><%= student.name %></li>
+        <% end %>
+      </ul></td>
+  </tr>
+  <tfoot>
+    <tr>
+      <td colspan=2 align=center> Front Of Class Room</td>
+    </tr>
+  </tfoot>
+</table>
+<div>
+    <h3>Absent on <%=Date%></h3>
+<table>
+  <% @absent_students.each do |student| %>
+    <tr>
+      <td><%= image_tag(student.image_url_with_fallback, size: "80x80") %></td>
+      <td><%= student.name %></td>
+    </tr>
+  <%end%>
+ </table>
+</div>
+<br /> <br /><br />
+      <h2>Listing All Students</h2>
       <table cellpadding="3">
         <tr>
           <th></th>
@@ -23,7 +84,6 @@
             <td><%= student.name %></td>
             <td align="center"><%= student.nickname %></td>
             <td><%= mail_to student.email %></td>
-
             <td><%= link_to 'Show', student %></td>
           </tr>
           <tr> <!-- If the current user matches an email address make a new row with options to edit profile and delete profile-->
@@ -34,3 +94,4 @@
             <%end%>
           </tr>
         <% end %>
+        
