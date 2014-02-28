@@ -1,6 +1,5 @@
 class AttendancesController < ApplicationController
-  before_filter :require_login
-  
+
   def index
     @date = params[:date] || Date.today
 
