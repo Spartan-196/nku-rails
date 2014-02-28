@@ -3,12 +3,7 @@ class AttendancesController < ApplicationController
   
   def index
     @date = params[:date] || Date.today
-    if params[:student_id].present?
-      @attendances = Student.find(params[:student_id])
-    else
-      Attendances.all
-    end
-    
+
     #attempt to find who is in what seat and who is not present.
     @seat_1 = Student.in_seat(1, @date)
     @seat_2 = Student.in_seat(2, @date)
@@ -38,23 +33,6 @@ class AttendancesController < ApplicationController
       redirect_to students_path
     end
   end
-  
-  
-  def self.in_seat(seat, now=Date.today)
-    present(now).where('attendances.seat = ?', seat)
-    
-    #Student.joins(:attendances).where(attendances: {seat: seat, attended_on: date})
-  end
-
-  def self.absent(now=Date.today)
-    where.not(id: present(now))
-    #Student.joins(:attendances).where.not(attendances: {attended_on: date})
-  end
-
-  def self.present(now=Date.today)
-    joins(:attendances).where(attendances: {attended_now: now})
-  end
-  
   
   
   private 
