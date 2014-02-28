@@ -4,6 +4,9 @@ NkuRails::Application.routes.draw do
     resources :comments #adds nested resources within post
   end
   resources :sessions, :students, :attendances
+  resources :attendances do 
+    resources :students
+  end
 #    GET    /posts/:id(.:format)      posts #show
 #    GET    /posts/:id(.:format)      posts #index
 #    DELETE /posts/:id(.:format)      posts #destroy
