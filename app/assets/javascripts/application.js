@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+      google.load("visualization", "1", {packages:["corechart"]});
+      //google.setOnLoadCallback(drawChart);
+      function drawStudentChart(absentCount, presentCount) {
+        var data = google.visualization.arrayToDataTable([
+          ['Students', 'Attendance rate'],
+          ['Present',   absentCount  //<%= Student.present.count%>],
+          ['Absent',    presentCount  //<%= Student.absent.count%>],
+        ]);
+
+        var options = {
+          title: 'Attendance Status for <%= @date%>'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
