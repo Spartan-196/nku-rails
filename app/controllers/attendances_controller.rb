@@ -34,14 +34,23 @@ class AttendancesController < ApplicationController
   end
   
   
-  def self.in_seat(seat, date)
-   Student.joins(:attendances).where(attendances: {seat: seat, attended_on: date})
+  def self.in_seat(seat, now=Date.today)
+    present(now).where('attendances.seat = ?', seat)
+    
+    #Student.joins(:attendances).where(attendances: {seat: seat, attended_on: date})
   end
 
-  def self.absent(date)
-    Student.joins(:attendances).where.not(attendances: {attended_on: date})
+  def self.absent(now=Date.today)
+    where.not(id: present(now))
+    #Student.joins(:attendances).where.not(attendances: {attended_on: date})
   end
 
+  def self.present(now=Date.today)
+    joins(:attendances).where(attendances: {attended_now: now})
+  end
+  
+  
+  
   private 
   
   def attandances_parms
