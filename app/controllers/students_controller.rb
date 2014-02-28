@@ -38,6 +38,7 @@ def update
 end
  
 def index
+  @date = params[:date] || Date.today
   @student = Student.all 
 end
  
