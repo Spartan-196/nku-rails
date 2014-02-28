@@ -1,5 +1,5 @@
 
-<h2>Attendance for <%= @date%></h2>
+<h2>Attendance for <%= @date %></h2>
 <%=form_tag attendances_path, method: :get do%>
   <%=date_field_tag(:date, @date)%>
 <%=submit_tag "Go"%>
