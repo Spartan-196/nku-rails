@@ -3,6 +3,12 @@ class AttendancesController < ApplicationController
   
   def index
     @date = params[:date] || Date.today
+    if params[:student_id].present?
+      @attendances = Student.find(params[:student_id])
+    else
+      Attendances.all
+    end
+    
     #attempt to find who is in what seat and who is not present.
     @seat_1 = Student.in_seat(1, @date)
     @seat_2 = Student.in_seat(2, @date)
