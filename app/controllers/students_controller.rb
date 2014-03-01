@@ -5,7 +5,6 @@ def new
 end
  
 def create
-  # render text: params[:student].inspect #Debug dump submitted text to screen to test submition without page generation.
   @student = Student.new(student_params) 
  
   if @student.save #Save input to new student
@@ -20,7 +19,6 @@ def create
 def show
   @student = Student.find(params[:id])
   @current = current_student
-  #flash[:info] = @current.name
 end
 
 def edit
@@ -50,7 +48,6 @@ def destroy
   @current_user=nil
     redirect_to students_path
 end
-  #http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show] #requires login to student, user id dhh password secret
   
 private
   def student_params
