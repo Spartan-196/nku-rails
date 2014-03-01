@@ -4,9 +4,9 @@ class AttendancesController < ApplicationController
   def index
     @date = params[:date] || Date.today    
     if params[:student_id].present?
-      @attendances = Student.find(params[:student_id])
+      @attendances = Student.find(params[:student_id]).attendances
     else
-      Attendances.all
+      @attendances = Attendance.all
     end
 
     #attempt to find who is in what seat and who is not present.
@@ -29,7 +29,7 @@ class AttendancesController < ApplicationController
     @existing_attendance=Attendance.where(:attended_on => Date.today, :student_id => @current)
     if (@existing_attendance.first== nil)
       if @attendance.save
-        redirect_to attendances_path, notice: "Attendance Recorded"
+        redirect_to students_path, notice: "Attendance Recorded"
     else 
       render 'new' 
     end

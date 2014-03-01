@@ -1,54 +1,32 @@
-
-<h2>Attendance for <%= @date %></h2>
-<%=form_tag attendances_path, method: :get do%>
-  <%=date_field_tag(:date, @date)%>
-<%=submit_tag "Go"%>
-<%end%>
+<% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+<% end -%>
+<h1>Attendance List</h1>
+<% if current_student %>
+<br/>
+<br/>
+<%= link_to "Back", students_path %>
+<br/>
+<% end %>
 <table>
+<% @attendances.each do |attendance| %>
   <tr>
-    <td><div>Seat 1</div>
-      <ul>
-        <% @seat_1.each do |student| %>
-        <li><%= student.name %></li>
-        <% end %>
-      </ul></td>
-    <td><div>Seat 2</div>
-      <ul>
-        <% @seat_2.each do |student| %>
-        <li><%= student.name %></li>
-        <% end %>
-      </ul></td>
+     <td>
+       <br/>
+    </td>
   </tr>
   <tr>
-    <td><div>Seat 3</div>
-      <ul>
-        <% @seat_3.each do |student| %>
-        <li><%= student.name %></li>
-        <% end %>
-      </ul></td>
-    <td><div>Seat 4</div>
-      <ul>
-        <% @seat_4.each do |student| %>
-        <li><%= student.name %></li>
-        <% end %>
-      </ul></td>
+    <td><strong>Student: </strong></td>
+    <td><%= link_to attendance.student.try(:name), attendances_path(:id => attendance.student_id) %></td>
   </tr>
-  <tfoot>
-    <tr>
-      <td colspan=2 align=center> Front Of Class Room</td>
-    </tr>
-  </tfoot>
+  <tr>
+    <td><strong>Attended On: </strong></td>
+    <td><%= attendance.attended_on %></td>
+  </tr>
+  <tr>
+    <td><strong>Seat: </strong></td>
+    <td><%= attendance.seat %></td>
+  </tr>
+<% end %>
 </table>
-<% @absent_students = Student.absent(@date) %>
-<div>
-    <h3>Absent on <%=Date%></h3>
-<table>
-  <% @absent_students.each do |student| %>
-    <tr>
-      <td><%= image_tag(student.image_url_with_fallback, size: "80x80") %></td>
-      <td><%= student.name %></td>
-    </tr>
-  <%end%>
- </table>
-</div>
 <%= link_to 'Back', students_path %> 
