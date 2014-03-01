@@ -9,6 +9,14 @@
 <br/>
 <% end %>
 <table>
+  <table cellpadding="3">
+  <tr>
+    <th><strong>Student </strong></th>
+    <th>&nbsp</th>
+    <th><strong>Attended On </strong></th>
+    <th>&nbsp</th>
+    <th><strong>Seat</strong></th>
+  </tr>
 <% @attendances.each do |attendance| %>
   <tr>
      <td>
@@ -16,16 +24,11 @@
     </td>
   </tr>
   <tr>
-    <td><strong>Student: </strong></td>
     <td><%= link_to attendance.student.try(:name), attendances_path(:student_id => attendance.student_id) %></td>
-  </tr>
-  <tr>
-    <td><strong>Attended On: </strong></td>
+    <td>  </td>    
     <td><%= attendance.attended_on %></td>
-  </tr>
-  <tr>
-    <td><strong>Seat: </strong></td>
-    <td><%= attendance.seat %></td>
+    <td>  </td>
+    <td alight="right"><%= attendance.seat %></td>
   </tr>
 <% end %>
 </table>
