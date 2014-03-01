@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <td><strong>Student: </strong></td>
-    <td><%= link_to attendance.student.try(:name), attendances_path(:id => attendance.student_id) %></td>
+    <td><%= link_to attendance.student.try(:name), attendances_path(:student_id => attendance.student_id) %></td>
   </tr>
   <tr>
     <td><strong>Attended On: </strong></td>
