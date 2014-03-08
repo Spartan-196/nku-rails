@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
    before_action :require_login
   
-  def current_student
+  def get_current_student
     # Find whos logged in
     if( session[:student_id] == nil )
       return nil
