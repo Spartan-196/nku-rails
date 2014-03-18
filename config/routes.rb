@@ -1,8 +1,5 @@
 NkuRails::Application.routes.draw do
   #get "welcome/index"
-  resources :posts do #Adds REST resources
-    resources :comments #adds nested resources within post
-  end
   resources :sessions, :students, :attendances
   resources :attendances do 
     resources :students
