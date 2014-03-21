@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     return Student.find( session[:student_id] )
   end
   
-  helper_method :current_student
+  helper_method :get_current_student
  
   private
   def require_login
