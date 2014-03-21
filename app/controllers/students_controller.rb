@@ -18,7 +18,7 @@ def create
 
 def show
   @student = Student.find(params[:id])
-  @current = current_student
+  @current = get_current_student
 end
 
 def edit
