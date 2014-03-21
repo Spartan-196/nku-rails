@@ -12,7 +12,7 @@
 
 <%= link_to 'I\'m Here', new_attendance_path %> | <%= link_to 'View All Attendances', attendances_path%> <br />
 
-<%= form_tag :student_upload, {multipart: true} do %>
+<%= form_tag :students_upload, {multipart: true} do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Upload"%>
 <% end %>
