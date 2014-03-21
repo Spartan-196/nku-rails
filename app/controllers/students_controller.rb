@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
     end
    end
   def upload
-    StudentUploader.new(parms[:file])
+    StudentUploader.new(params[:file])
     redirect_to student_path
   end
       
