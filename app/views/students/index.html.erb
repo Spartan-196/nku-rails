@@ -1,7 +1,7 @@
 <% if flash[:notice] %> <!-- If theres a flash notice load it here at the top in new div section-->
   <div class="notice"><%= flash[:notice] %> </div>
 <%end%>
-  <% @current = current_student %> <!--Find current user login-->
+  <% @current = get_current_student %> <!--Find current user login-->
   <% if @current == nil %> <!-- if no login show new secctions with sign up/sign in links {will edit later to lok nice-->
     <p><%= link_to 'Sign up', new_student_path %> <strong>|</strong> <%= link_to 'Sign in', sessions_path %></p>
     <% else %>
