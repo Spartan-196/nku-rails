@@ -36,6 +36,9 @@
     <%=f.label :image %> <br>
     <%=f.text_field :image %>
   </p>
+<%if current_student && current_student.id == student.id %>
+<%= link_to 'Delete Profile', student_path(student),method: :delete, data: { confirm: 'Perminately Delete Your Profle?' } %>
+<%end%>
   <p class="button">
     <%= f.submit %> <!-- submit button-->
   </p>
