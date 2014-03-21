@@ -1,11 +1,11 @@
 <% if flash[:notice] %> <!-- If theres a flash notice load it here at the top in new div section-->
   <div class="notice"><%= flash[:notice] %> </div>
 <%end%>
-  <% @current = @get_current_student %> <!--Find current user login-->
-  <% if @current == nil %> <!-- if no login show new secctions with sign up/sign in links {will edit later to lok nice-->
+
+  <% if get_current_student == nil %> <!-- if no login show new secctions with sign up/sign in links {will edit later to lok nice-->
     <p><%= link_to 'Sign up', new_student_path %> <strong>|</strong> <%= link_to 'Sign in', sessions_path %></p>
     <% else %>
-       <h4>Welcome, <%= @get_current_student.name %> | <%= link_to 'Edit Profile', edit_student_path(@student) %> |<%= link_to "Sign out", session_path(session), method: :delete, data: { confirm: 'Are you sure you want to sign out?' } %> </h4> 
+       <h4>Welcome, <%= get_current_student.name %> | <%= link_to 'Edit Profile', edit_student_path(@student) %> |<%= link_to "Sign out", session_path(session), method: :delete, data: { confirm: 'Are you sure you want to sign out?' } %> </h4> 
   <% end %>
 
 
@@ -30,7 +30,7 @@
             <td><%= link_to 'Show', student %></td>
           </tr>
           <tr> <!-- If the current user matches an email address make a new row with options to edit profile and delete profile-->
-            <%if @get_current_student && @get_current_student.id == student.id %>
+            <%if get_current_student && get_current_student.id == student.id %>
             <td><%= link_to 'Delete Profile', student_path(student),method: :delete, data: { confirm: 'Perminately Delete Your Profle?' } %></td>
             <td></td>
             <%end%>
