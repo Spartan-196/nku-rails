@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def require_login
     if get_current_student == nil
       flash[:error] = "You must be logged in to access this section"
-      redirect_to login_path # halts request cycle
+      redirect_to sessions_path # halts request cycle
     end
    end
   end
