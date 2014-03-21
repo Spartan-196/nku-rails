@@ -15,10 +15,12 @@ class StudentsController < ApplicationController
       render 'new' #Show form for them to correct invalid entrie
     end
    end
+  
   def upload
     StudentUploader.new(params[:file])
-    redirect_to student_path
+    redirect_to students_path
   end
+  
       
   def show
     @student = Student.find(params[:id])
@@ -58,4 +60,5 @@ class StudentsController < ApplicationController
       params.require(:student).permit(:name, :nickname, :email, :password, :password_confirmation, :image)
     end
  end 
+
   

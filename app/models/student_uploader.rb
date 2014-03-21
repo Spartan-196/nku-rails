@@ -1,9 +1,13 @@
+require 'csv'
+
 class StudentUploader
-  def intialize(file)
+  def initialize(file)
     @file = file
   end
   
   def import
-    @file.read
+    CSV.parse(@file.path :headers => true) do |row|
+    
+    end
   end
 end
