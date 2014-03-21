@@ -1,6 +1,12 @@
 NkuRails::Application.routes.draw do
   #get "welcome/index"
-  resources :sessions, :students, :attendances
+  resources :students do
+    
+  end
+  post "students/upload", to: "students#upload", as: :students_upload
+
+  
+  resources :sessions, :attendances
   resources :attendances do 
     resources :students
   end
