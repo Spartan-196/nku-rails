@@ -1,35 +1,65 @@
 <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
 <% end -%>
-<h1>Attendance List</h1>
-<% if current_student %>
-<br/>
-<br/>
-<%= link_to "Back", students_path %>
-<br/>
-<% end %>
-<table>
-  <table cellpadding="3">
+      <h2>Attendance for <%=@date%> </h2>
+    <div class="date">
+      <%=form_tag attendances_path, method: :get do%>
+        <%=date_field_tag(:date, @date)%>
+      <%=submit_tag "Go"%>
+      <%end%>
+    </div>
+
+    <%@seat_1 = Student.in_seat(1, @date)%>
+    <%@seat_2 = Student.in_seat(2, @date)%>
+    <%@seat_3 = Student.in_seat(3, @date)%>
+    <%@seat_4 = Student.in_seat(4, @date)%>
+    <%@absent_students= Student.absent(@date)%>
+
+<table class="table">
   <tr>
-    <th><strong>Student </strong></th>
-    <th>&nbsp</th>
-    <th><strong>Attended On </strong></th>
-    <th>&nbsp</th>
-    <th><strong>Seat</strong></th>
+    <td><div>Seat 1</div>
+      <ul>
+        <% @seat_1.each do |student| %>
+        <li><%= image_tag(student.image_url_with_fallback, size: "80x80") %> <%= student.name %></li>
+        <% end %>
+      </ul></td>
+    <td><div>Seat 2</div>
+      <ul>
+        <% @seat_2.each do |student| %>
+        <li><%= image_tag(student.image_url_with_fallback, size: "80x80") %> <%= student.name %></li>
+        <% end %>
+      </ul></td>
   </tr>
-<% @attendances.each do |attendance| %>
   <tr>
-     <td>
-       <br/>
-    </td>
+    <td><div>Seat 3</div>
+      <ul>
+        <% @seat_3.each do |student| %>
+        <li><%= image_tag(student.image_url_with_fallback, size: "80x80") %> <%= student.name %></li>
+        <% end %>
+      </ul></td>
+    <td><div>Seat 4</div>
+      <ul>
+        <% @seat_4.each do |student| %>
+        <li><%= image_tag(student.image_url_with_fallback, size: "80x80") %> <%= student.name %></li>
+        <% end %>
+      </ul></td>
   </tr>
-  <tr>
-    <td><%= link_to attendance.student.try(:name), attendances_path(:student_id => attendance.student_id) %></td>
-    <td>  </td>    
-    <td><%= attendance.attended_on %></td>
-    <td>  </td>
-    <td alight="right"><%= attendance.seat %></td>
-  </tr>
-<% end %>
+  <tfoot>
+    <tr>
+      <td colspan=2 align=center> Front Of Class Room</td>
+    </tr>
+  </tfoot>
 </table>
+<div>
+    <h3>Absent on <%=Date%></h3>
+<table>
+  <% @absent_students.each do |student| %>
+    <tr>
+      <td><%= image_tag(student.image_url_with_fallback, size: "80x80") %></td>
+      <td><%= student.name %></td>
+    </tr>
+  <%end%>
+ </table>
+</div>
+<br /> <br /><br />
 <%= link_to 'Back', students_path %> 
