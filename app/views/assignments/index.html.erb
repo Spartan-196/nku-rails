@@ -1,0 +1,23 @@
+<h2> <%= get_current_student.name %>'s  Grades </h2>
+<table class="table">
+  <thead>
+      <tr>
+        <th>Name</th>
+        <th>Points Recieved</th>
+        <th>Points Possible</th>
+        <th>Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% assignments.each do |assignment| %>
+    <tr>
+      <td><%= link_to assignment.assignment_name, assignments_path(:search => assignment.student_id) %></td>
+      <td><%= assignement.score %></td>
+      <td><%= assignement.total%></td>
+      <td><%= assignement.percent %></td>
+    </tr>
+  </tbody>
+</table>
+<% if not get_current_student.admin? %>
+<p> Current Grade: <%= get_current_student.assignements.average %> </p>
+<% end %>
