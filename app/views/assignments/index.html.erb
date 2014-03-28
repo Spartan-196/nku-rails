@@ -1,9 +1,9 @@
 <% if get_current_user.admin?%>
 
-<%= form_tag :students_upload, {multipart: true} do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Upload"%>
-<% end %>
+  <%= form_tag :students_upload, {multipart: true} do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Upload"%>
+  <% end %>
 <% end %>
 
 <h2> <%= get_current_student.name %>'s  Grades </h2>
@@ -22,10 +22,10 @@
       <td><%= link_to assignment.assignment_name, assignments_path(:search => assignment.student_id) %></td>
       <td><%= assignement.score %></td>
       <td><%= assignement.total%></td>
-      <td><%= assignement.percent %></td>
+      <td><%= assignement.average_percent %></td>
     </tr>
   </tbody>
 </table>
 <% if not get_current_student.admin? %>
-<p> Current Grade: <%= get_current_student.assignements.average %> </p>
+  <p> Current Grade: <%= get_current_student.assignements.average_percent %> </p>
 <% end %>
