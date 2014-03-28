@@ -1,3 +1,11 @@
+<% if get_current_user.admin?%>
+
+<%= form_tag :students_upload, {multipart: true} do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload"%>
+<% end %>
+<% end %>
+
 <h2> <%= get_current_student.name %>'s  Grades </h2>
 <table class="table">
   <thead>
