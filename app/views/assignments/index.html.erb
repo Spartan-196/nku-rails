@@ -1,10 +1,10 @@
-<% if get_current_user.admin?%>
+<% # if get_current_user.admin?%>
 
   <%= form_tag :assignment_upload, {multipart: true} do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Upload"%>
   <% end %>
-<% end %>
+<% # end %>
 
 <h2> <%= get_current_student.name %>'s  Grades </h2>
 <table class="table">
@@ -24,6 +24,8 @@
       <td><%= assignement.total%></td>
       <td><%= assignement.average_percent %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
+
   <p> Current Grade: <%= get_current_student.assignements.average_percent %> </p>
