@@ -1,7 +1,5 @@
 class AssignmentUploader
-  def index
-  end
-  
+
 require 'csv'
 
   def initialize(file)
