@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  
+   before_action :is_admin, only: [:new]
   def new
     if admin?
       @assignment = Assignment.new
@@ -23,7 +23,15 @@ class AssignmentsController < ApplicationController
     end
   end
   
+  def show
+    @assignments = Assignment.where("student_id = ?", params[:id])
+  end
+  
   def index
-    render :show
+    if(params[:id] == nil)
+      @assignments = Assignment.all
+    else
+      @assignments = Assignment.where("student_id = ?", params[:id])
+    end      
   end
 end
