@@ -9,6 +9,11 @@ class AssignmentsController < ApplicationController
     end
   end
   
+  def upload
+    AssignmentUploader.new(params[:file])
+    redirect_to assignments_path
+  end
+    
   def create
     if admin?
       @assignment = Assignment.new(assignment_params)
