@@ -5,7 +5,7 @@ NkuRails::Application.routes.draw do
   end
   post "students/upload", to: "students#upload", as: :students_upload
 
-  
+  post "assignments/upload", to: "assignments#upload", as: :assignments_upload  
   resources :sessions, :attendances, :assignments
   resources :attendances do 
     resources :students
