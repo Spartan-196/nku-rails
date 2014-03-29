@@ -2,11 +2,12 @@
   <div class="notice"><%= flash[:notice] %> </div>
 <%end%>
 
-
-<%= form_tag :students_upload, {multipart: true} do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Upload"%>
-<% end %>
+<% if get_current_student.admin? %>
+  <%= form_tag :students_upload, {multipart: true} do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Upload"%>
+  <% end %>
+<%end %>
       <table class="table">
         <thead>Listing All Students</thead>
         <tr>
