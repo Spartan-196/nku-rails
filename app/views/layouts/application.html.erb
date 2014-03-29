@@ -15,7 +15,9 @@
 
 
 
-<%= link_to 'I\'m Here', new_attendance_path %> | <%= link_to 'View All Attendances', attendances_path%> <br />
+<% if get_current_student != nil %>
+  <%= link_to 'I\'m Here', new_attendance_path %> | <%= link_to 'View All Attendances', attendances_path%> <br />
+<% end %>
 
   <div class="container"><%= yield %></div>
 
