@@ -2,6 +2,7 @@ require 'digest'
 
 class Student < ActiveRecord::Base
   has_many :attendances
+  has_many :assignments
   validates :name, presence: true, length: { minimum: 2 }
   #validates :email, presence: true
   #Schema: User(name:string, password_digest:string)
