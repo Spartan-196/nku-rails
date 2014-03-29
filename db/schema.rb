@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307210850) do
+ActiveRecord::Schema.define(version: 20140328211545) do
 
   create_table "assignments", force: true do |t|
     t.integer "total"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140307210850) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin"
   end
 
   create_table "teachers", force: true do |t|
