@@ -2,15 +2,6 @@
   <div class="notice"><%= flash[:notice] %> </div>
 <%end%>
 
-  <% if get_current_student == nil %> <!-- if no login show new secctions with sign up/sign in links {will edit later to lok nice-->
-    <p><%= link_to 'Sign up', new_student_path %> <strong>|</strong> <%= link_to 'Sign in', sessions_path %></p>
-    <% else %>
-       <h4>Welcome, <%= get_current_student.name %> | <%= link_to 'Edit Profile', edit_student_path(get_current_student) %> | <%= link_to "Assignments", assignment_path(get_current_student) %> |<%= link_to "Sign out", session_path(session), method: :delete, data: { confirm: 'Are you sure you want to sign out?' } %> </h4> 
-  <% end %>
-
-
-
-<%= link_to 'I\'m Here', new_attendance_path %> | <%= link_to 'View All Attendances', attendances_path%> <br />
 
 <%= form_tag :students_upload, {multipart: true} do %>
   <%= file_field_tag :file %>
